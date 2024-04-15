@@ -1,15 +1,9 @@
-// Write your solution here!
-
 const cats = ["Milo", "Otis", "Garfield"];
-let x ='Ralph';
-//add in the end
+
 function destructivelyAppendCat(name) {
   cats.push(name);
 }
-//destructivelyAppendCat(x) ;
-//console.log(cats)
 
-//add in the begsin
 function destructivelyPrependCat(name) {
   cats.unshift(name);
 }
@@ -17,25 +11,64 @@ function destructivelyPrependCat(name) {
 function destructivelyRemoveFirstCat() {
   cats.shift();
 }
-//last 
+
 function destructivelyRemoveLastCat() {
   cats.pop();
 }
-//
-function appendCat(name) {
-  return cats.concat(name);
-}
-appendCat("Broom");
-console.log(cats)
-function prependCat(name) {
-    return [name, ...cats];
 
+function appendCat(name) {
+  // Create a copy of the cats array and add the new cat to the end
+  const newCats = cats.slice();
+  newCats.push(name);
+  return newCats;
 }
-//mn cats 0 htan m9bl akhira -1
+
+function prependCat(name) {
+  // Create a new array with the provided cat name at the beginning
+  return [name, ...cats];
+}
+
 function removeLastCat() {
+  // Return a new array with the last cat removed
   return cats.slice(0, cats.length - 1);
 }
-//awl wehda y3ni mn godamha wa roh 
+
 function removeFirstCat() {
+  // Return a new array with the first cat removed
   return cats.slice(1);
 }
+
+// Testing the functions
+console.log("Original cats:", cats);
+
+// Append a new cat destructively
+destructivelyAppendCat("Broom");
+console.log("After appending Broom:", cats);
+
+// Prepend a new cat destructively
+destructivelyPrependCat("Whiskers");
+console.log("After prepending Whiskers:", cats);
+
+// Remove the first cat destructively
+destructivelyRemoveFirstCat();
+console.log("After removing the first cat:", cats);
+
+// Remove the last cat destructively
+destructivelyRemoveLastCat();
+console.log("After removing the last cat:", cats);
+
+// Append a new cat without modifying the original array
+const newCats = appendCat("Tom");
+console.log("New cats array after appending Tom:", newCats);
+
+// Prepend a new cat without modifying the original array
+const prependedCats = prependCat("Snowball");
+console.log("New array after prepending Snowball:", prependedCats);
+
+// Remove the last cat without modifying the original array
+const removedLastCat = removeLastCat();
+console.log("New array after removing last cat:", removedLastCat);
+
+// Remove the first cat without modifying the original array
+const removedFirstCat = removeFirstCat();
+console.log("New array after removing first cat:", removedFirstCat);
